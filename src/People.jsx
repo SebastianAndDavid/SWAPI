@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import fetchPeople from './services/fetch-utils';
+import './App.css';
 
 function People() {
   const [people, setPeople] = useState([]);
@@ -15,9 +16,11 @@ function People() {
   }, []);
 
   return (
-    <div>
+    <div className="people-container">
       {people.map((person, i) => (
-        <div key={person.name + i}>{person.name}</div>
+        <div className="people-card" key={person.name + i}>
+          {person.name}
+        </div>
       ))}
     </div>
   );
