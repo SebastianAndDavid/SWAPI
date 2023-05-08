@@ -21,10 +21,17 @@ body,
 
 .people-card {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: top;
   border: 1px solid black;
-  width: 100px;
-  height: 100px;
+  width: fit-content;
+  height: fit-content;
   margin: 10px;
+  flex-direction: column;
+}
+.people-card p {
+  margin: 5px;
+}
+.people-card h5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

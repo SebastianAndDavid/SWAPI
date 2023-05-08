@@ -19,7 +19,12 @@ function People() {
     <div className="people-container">
       {people.map((person, i) => (
         <div className="people-card" key={person.name + i}>
-          {person.name}
+          <h5>{person.name}</h5>
+          <p>Birthday: {person.birth_year}</p>
+          <p>Gender: {person.gender}</p>
+          <p>Height: {person.height}</p>
+          <p>Mass: {person.mass}</p>
+          <p>Homeworld: {person.homeworld}</p>
         </div>
       ))}
     </div>
