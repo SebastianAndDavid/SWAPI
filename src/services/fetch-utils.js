@@ -7,3 +7,4 @@ async function fetchPeople() {
 }
 
 export default fetchPeople;
+//does this work?
