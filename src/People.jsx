@@ -1,18 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import fetchPeople from './services/fetch-utils';
+import { fetchPeople, fetchSinglePlanet } from './services/fetch-utils';
 import './App.css';
 
 function People() {
   const [people, setPeople] = useState([]);
 
   async function handleFetchPeople() {
-    const response = await fetchPeople();
-    setPeople(response);
+    const people = await fetchPeople();
+
+    const homeworldPromises = people.map((person) => handleFetchSinglePlanet(person.homeworld));
+
+    const homeworlds = await Promise.all(homeworldPromises);
+    console.log(homeworlds);
+
+    const mappedOverPeople = people.map((person, i) => ({
+      ...person,
+      homeworld: homeworlds[i].name,
+    }));
+    console.log(mappedOverPeople);
+    setPeople(mappedOverPeople);
+    console.log(people);
+    return people;
+  }
+
+  async function handleFetchSinglePlanet(url) {
+    const response = await fetchSinglePlanet(url);
     return response;
   }
 
   useEffect(() => {
     handleFetchPeople();
+    // handleFetchSinglePlanet();
   }, []);
 
   return (
