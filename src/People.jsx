@@ -11,13 +11,11 @@ function People() {
     const homeworldPromises = people.map((person) => handleFetchSinglePlanet(person.homeworld));
 
     const homeworlds = await Promise.all(homeworldPromises);
-    console.log(homeworlds);
 
     const mappedOverPeople = people.map((person, i) => ({
       ...person,
       homeworld: homeworlds[i].name,
     }));
-    console.log(mappedOverPeople);
     setPeople(mappedOverPeople);
     console.log(people);
     return people;
@@ -30,13 +28,16 @@ function People() {
 
   useEffect(() => {
     handleFetchPeople();
-    // handleFetchSinglePlanet();
   }, []);
+
+  function handleClick() {
+    console.log('clicking');
+  }
 
   return (
     <div className="people-container">
       {people.map((person, i) => (
-        <div className="people-card" key={person.name + i}>
+        <div className="people-card" key={person.name + i} onClick={handleClick}>
           <h5>{person.name}</h5>
           <p>Birthday: {person.birth_year}</p>
           <p>Gender: {person.gender}</p>
