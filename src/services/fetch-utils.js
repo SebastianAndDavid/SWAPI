@@ -8,9 +8,10 @@ async function fetchPeople() {
 
 async function fetchSinglePlanet(url) {
   const data = await fetch(url);
+
   const result = await data.json();
+
   return result;
 }
 
 export { fetchPeople, fetchSinglePlanet };
-//does this work?
