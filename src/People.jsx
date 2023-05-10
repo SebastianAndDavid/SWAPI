@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPeople, fetchSinglePlanet } from './services/fetch-utils';
 import './App.css';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 function People() {
   const [people, setPeople] = useState([]);
+  const navigate = useNavigate();
 
   async function handleFetchPeople() {
     const people = await fetchPeople();
@@ -31,22 +33,26 @@ function People() {
   }, []);
 
   function handleClick() {
-    console.log('clicking');
+    navigate('detail');
   }
 
   return (
-    <div className="people-container">
-      {people.map((person, i) => (
-        <div className="people-card" key={person.name + i} onClick={handleClick}>
-          <h5>{person.name}</h5>
-          <p>Birthday: {person.birth_year}</p>
-          <p>Gender: {person.gender}</p>
-          <p>Height: {person.height}</p>
-          <p>Mass: {person.mass}</p>
-          <p>Homeworld: {person.homeworld}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <h2>SWAPI - The Starwars API</h2>
+      <div className="people-container">
+        {people.map((person, i) => (
+          <div className="people-card" key={person.name + i} onClick={handleClick}>
+            <h5>{person.name}</h5>
+            <p>Birthday: {person.birth_year}</p>
+            <p>Gender: {person.gender}</p>
+            <p>Height: {person.height}</p>
+            <p>Mass: {person.mass}</p>
+            <p>Homeworld: {person.homeworld}</p>
+          </div>
+        ))}
+        <Outlet />
+      </div>
+    </>
   );
 }
 
