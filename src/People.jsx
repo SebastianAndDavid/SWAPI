@@ -1,8 +1,9 @@
 import './App.css';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function People({ people }) {
   const navigate = useNavigate();
+
   return (
     <>
       <h2>SWAPI - The Starwars API</h2>

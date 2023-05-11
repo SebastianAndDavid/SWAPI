@@ -17,6 +17,8 @@ body,
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .people-card {
@@ -34,4 +36,33 @@ body,
 .people-card h5 {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.people-card:hover {
+  background-color: gold;
+  font-weight: 500;
+}
+/* Detail Page */
+.detail-page {
+  height: 100%;
+}
+
+.detail-page header {
+  /* background-color: black; */
+  height: 25px;
+  display: flex;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 2px solid black;
+  margin: 2px 2px;
+}
+
+.button:hover {
+  cursor: grabbing;
+  transition: 0.5s;
+  background-color: black;
+  color: white;
 }
