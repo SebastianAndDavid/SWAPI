@@ -14,6 +14,7 @@ function People({ people }) {
             key={person.name + i}
             onClick={() => navigate(`detail/${person.height}`)}
           >
+            {/* this should be a reusable component */}
             <h5>{person.name}</h5>
             <p>Birthday: {person.birth_year}</p>
             <p>Gender: {person.gender}</p>

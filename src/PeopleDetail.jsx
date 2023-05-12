@@ -18,8 +18,9 @@ function PeopleDetail({ people }) {
           Go Back
         </div>
       </header>
-      <h4>People Detail Component</h4>
+      <h4>Check out {singlePerson.name}s details!</h4>
       <div className="people-card">
+        {/* this should be a reusable component */}
         <h5>{singlePerson.name}</h5>
         <p>Birthday: {singlePerson.birth_year}</p>
         <p>Gender: {singlePerson.gender}</p>
