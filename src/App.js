@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import People from './People';
 import PeopleDetail from './PeopleDetail';
@@ -15,6 +15,7 @@ function App() {
     const homeworlds = await Promise.all(homeworldPromises);
     const mappedOverPeople = people.map((person, i) => ({
       ...person,
+      id: Math.floor(Math.random() * 10000),
       homeworld: homeworlds[i].name,
     }));
     setPeople(mappedOverPeople);
@@ -34,7 +35,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<People people={people} />} />
-        <Route path="detail" element={<PeopleDetail people={people} />} />
+        <Route path={`detail/:id`} element={<PeopleDetail people={people} />} />
       </Routes>
     </Router>
   );

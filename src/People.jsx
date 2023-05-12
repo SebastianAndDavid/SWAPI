@@ -9,7 +9,11 @@ function People({ people }) {
       <h2>SWAPI - The Starwars API</h2>
       <div className="people-container">
         {people.map((person, i) => (
-          <div className="people-card" key={person.name + i} onClick={() => navigate('detail')}>
+          <div
+            className="people-card"
+            key={person.name + i}
+            onClick={() => navigate(`detail/${person.id}`)}
+          >
             <h5>{person.name}</h5>
             <p>Birthday: {person.birth_year}</p>
             <p>Gender: {person.gender}</p>
