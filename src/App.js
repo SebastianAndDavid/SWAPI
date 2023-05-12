@@ -15,7 +15,6 @@ function App() {
     const homeworlds = await Promise.all(homeworldPromises);
     const mappedOverPeople = people.map((person, i) => ({
       ...person,
-      id: Math.floor(Math.random() * 10000),
       homeworld: homeworlds[i].name,
     }));
     setPeople(mappedOverPeople);

@@ -12,7 +12,7 @@ function People({ people }) {
           <div
             className="people-card"
             key={person.name + i}
-            onClick={() => navigate(`detail/${person.id}`)}
+            onClick={() => navigate(`detail/${person.height}`)}
           >
             <h5>{person.name}</h5>
             <p>Birthday: {person.birth_year}</p>

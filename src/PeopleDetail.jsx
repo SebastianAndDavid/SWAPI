@@ -1,13 +1,16 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './App.css';
+import People from './People.jsx';
 
 function PeopleDetail({ people }) {
-  const id = useParams();
+  const { id } = useParams();
   console.log('id', id);
-  console.log('peopleDetail', people);
-
+  console.log('people', people);
   const navigate = useNavigate();
 
+  const singlePerson = people.find((person) => person.height === id);
+
+  console.log('singlePerson', singlePerson);
   return (
     <div className="detail-page">
       <header>
@@ -15,8 +18,15 @@ function PeopleDetail({ people }) {
           Go Back
         </div>
       </header>
-      <div>People Detail Component</div>
-      <p>{people[1].name}</p>
+      <h4>People Detail Component</h4>
+      <div className="people-card">
+        <h5>{singlePerson.name}</h5>
+        <p>Birthday: {singlePerson.birth_year}</p>
+        <p>Gender: {singlePerson.gender}</p>
+        <p>Height: {singlePerson.height}</p>
+        <p>Mass: {singlePerson.mass}</p>
+        <p>Homeworld: {singlePerson.homeworld}</p>
+      </div>
     </div>
   );
 }
